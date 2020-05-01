@@ -25,6 +25,7 @@
               <v-container>
                 <v-card-title class="px-0">Add Book</v-card-title>
                 <v-form
+                  v-model="valid"
                   ref="form">
                   <v-row>
                     <v-col cols="12" sm="6" md="6">
@@ -85,6 +86,7 @@ export default {
     categoryRules: [
       v => !!v || 'Category is required'
     ],
+    valid: true,
     dialog: false,
     loading: false,
     headers: [
@@ -167,9 +169,11 @@ export default {
 
     save () {
       console.log(this.addItem)
-      this.onAddBook(this.addItem)
-      this.close()
-      this.resetValidation()
+      if (this.$refs.form.validate()) {
+        this.onAddBook(this.addItem)
+        this.close()
+        this.resetValidation()
+      }
     }
   }
 }
