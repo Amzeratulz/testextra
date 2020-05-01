@@ -10,7 +10,7 @@
         <br>
         <p id="subtext">{{subMsg}}</p>
         <br>
-        <v-btn large min-width="200" color="primary" @click="$router.push('/dashboard')">Go..</v-btn>
+        <v-btn id="button" large min-width="200" color="primary" @click="$router.push('/dashboard')">Go..</v-btn>
       </v-col>
     </v-row>
     </v-img>
@@ -52,6 +52,11 @@ export default {
   font-weight: bold;
   font-size: 2rem;
   color: GreenYellow;
+  animation-name: example;
+  animation-duration: 4s;
+}
+
+#button{
   animation-name: example;
   animation-duration: 4s;
 }

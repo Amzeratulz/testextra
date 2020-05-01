@@ -23,5 +23,15 @@ class books {
       console.log(error)
     }
   }
+
+  async deleteBook (payload) {
+    try {
+      console.log('payload from table', payload)
+      const data = await this.axios.delete(`books/${payload}.json`)
+      return data
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 export default books

@@ -14,6 +14,10 @@ const actions = {
     console.log('payload actions', payload)
     await bookProvider.createBook(payload)
     commit('CREATE_BOOK', payload)
+  },
+  async deleteBook ({ commit }, payload) {
+    await bookProvider.deleteBook(payload)
+    commit('DELETE_BOOK', payload)
   }
 }
 
@@ -33,6 +37,14 @@ const mutations = {
   },
   CREATE_BOOK (state, payload) {
     state.books.push(payload)
+  },
+  DELETE_BOOK (state, payload) {
+    console.log('payload index', payload)
+    const indexedBook = state.books.findIndex(value => {
+      return value.id === payload
+    })
+    state.books.splice(indexedBook, 1)
+    console.log('indexedBook', indexedBook)
   }
 }
 

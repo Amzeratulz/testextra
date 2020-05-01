@@ -127,7 +127,8 @@ export default {
   methods: {
     ...mapActions({
       getAllBooks: 'getAllBooks',
-      createBook: 'createBook'
+      createBook: 'createBook',
+      deleteBook: 'deleteBook'
     }),
     async onAddBook () {
       try {
@@ -152,9 +153,11 @@ export default {
     resetValidation () {
       this.$refs.form.reset()
     },
-    deleteItem (item) {
-      const index = this.desserts.indexOf(item)
-      confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1)
+    async deleteItem (item) {
+      console.log(item)
+      if (confirm('Are you sure you want to delete this item?')) {
+        await this.deleteBook(item.id)
+      }
     },
 
     close () {

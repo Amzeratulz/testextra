@@ -41,7 +41,7 @@ export default {
     }
   },
   updated () {
-    console.log('asdasdasdadasdasdasdad')
+
   },
   async created () {
     await this.getAllBooks()
@@ -63,6 +63,11 @@ export default {
   },
   components: {
     PieChart
+  },
+  watch: {
+    books () {
+      this.calPie()
+    }
   }
 }
 </script>
